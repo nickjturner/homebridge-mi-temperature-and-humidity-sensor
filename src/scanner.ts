@@ -5,14 +5,13 @@ import { EventEmitter } from "events";
 export class Scanner extends EventEmitter {
   private readonly log: Logging;
 
-  private deviceName: string;
+  private address: string;
 
-  constructor(log: Logging, deviceName: string) {
+  constructor(log: Logging, address: string) {
     super();
 
     this.log = log;
-    this.deviceName = deviceName;
-    this.log.info("In the scanner");
+    this.address = address;
 
     this.registerEvents();
   }
@@ -26,7 +25,6 @@ export class Scanner extends EventEmitter {
   }
 
   start() {
-    this.log.info("Start scanning.");
     try {
       noble.startScanning([], true);
     } catch (error) {
@@ -39,8 +37,8 @@ export class Scanner extends EventEmitter {
   }
 
   async onDiscover(peripheral) {
-    if (peripheral.advertisement.localName) {
-      if (peripheral.advertisement.localName == this.deviceName) {
+    if (peripheral.address) {
+      if (peripheral.address == this.address) {
         const serviceData = peripheral.advertisement.serviceData;
         for (const j in serviceData) {
           let b = serviceData[j].data
@@ -58,11 +56,11 @@ export class Scanner extends EventEmitter {
   }
 
   onScanStart() {
-    this.log.info("Started scanning.");
+    this.log.debug("Started scanning.");
   }
 
   onScanStop() {
-    this.log.info("Stopped scanning.");
+    this.log.debug("Stopped scanning.");
   }
 
   onWarning(message) {
@@ -70,7 +68,6 @@ export class Scanner extends EventEmitter {
   }
 
   onStateChange(state) {
-    this.log.info("State change?")
     if (state === "poweredOn") {
       noble.startScanning([], true);
     } else {

@@ -6,7 +6,7 @@
   "main": "dist/accessory.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "rimraf ./dist && tsc",
+    "build": "NOBLE_REPORT_ALL_HCI_EVENTS=1 rimraf ./dist && tsc",
     "prepublishOnly": "npm run build",
     "postpublish": "npm run clean",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -37,9 +37,9 @@
   },
   "devDependencies": {
     "@types/node": "10.17.19",
-    "typescript": "^3.8.3",
+    "homebridge": "^1.0.4",
     "rimraf": "^3.0.2",
-    "homebridge": "^1.0.4"
+    "typescript": "^3.9.10"
   },
   "dependencies": {
     "@abandonware/noble": "^1.9.2-15",

@@ -49,43 +49,9 @@ class MiSensor implements AccessoryPlugin {
     log.info(this.config.name + " - Sensor finished initializing!");
     log.info("Config: " + this.config);
 
-    this.scanner = this.setupScanner(this.config.deviceName);
+    this.scanner = this.setupScanner(this.config.address);
   }
-
-  get temperature() {
-    if (this.latestTemperature == null) {
-      return 0;
-    }
-    return this.latestTemperature;
-  }
-
-  get humidity() {
-    if (this.latestHumidity == null) {
-      return 0;
-    }
-    return this.latestHumidity;
-  }
-
-  get batteryLevel() {
-    return this.latestBatteryLevel ?? 100;
-  }
-
-  get batteryStatus() {
-    let batteryStatus;
-    if (this.batteryLevel == null) {
-      batteryStatus = undefined;
-    } else if (this.batteryLevel > this.batteryLevelThreshold) {
-      batteryStatus = hap.Characteristic.StatusLowBattery.BATTERY_LEVEL_NORMAL;
-    } else {
-      batteryStatus = hap.Characteristic.StatusLowBattery.BATTERY_LEVEL_LOW;
-    }
-    return batteryStatus;
-  }
-
-  get batteryLevelThreshold() {
-    return 10;
-  }
-
+ 
   getServices(): Service[] {
     return [
       this.informationService,
@@ -112,9 +78,9 @@ class MiSensor implements AccessoryPlugin {
     temperatureService
       .getCharacteristic(hap.Characteristic.CurrentTemperature)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
-        this.log.info("Current tempeature returned");
-        callback(undefined, "temperature");
-      })
+        callback(undefined, (this.latestTemperature ?? 0));  
+      });
+     
     return temperatureService;
   }
 
@@ -123,9 +89,8 @@ class MiSensor implements AccessoryPlugin {
     humidityService
       .getCharacteristic(hap.Characteristic.CurrentRelativeHumidity)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
-        this.log.info("Current humidity returned");
-        callback(undefined, "humidity");
-      })
+        callback(undefined, (this.latestHumidity ?? 0));
+      });
     return humidityService;
   }
 
@@ -134,9 +99,8 @@ class MiSensor implements AccessoryPlugin {
     batteryService
       .getCharacteristic(hap.Characteristic.BatteryLevel)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
-        this.log.info("Current battery level returned");
-        callback(undefined, "batteryLevel");
-      })
+        callback(undefined, this.batteryLevel());
+      });
     batteryService.setCharacteristic(
       hap.Characteristic.ChargingState,
       hap.Characteristic.ChargingState.NOT_CHARGEABLE
@@ -144,20 +108,34 @@ class MiSensor implements AccessoryPlugin {
     batteryService
       .getCharacteristic(hap.Characteristic.StatusLowBattery)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
-        this.log.info("Current battery status returned");
-        callback(undefined, "batteryStatus");
+        let batteryStatus;
+
+        if (this.batteryLevel() > this.batteryLevelThreshold()) {
+          batteryStatus = hap.Characteristic.StatusLowBattery.BATTERY_LEVEL_NORMAL;
+        } else {
+           batteryStatus = hap.Characteristic.StatusLowBattery.BATTERY_LEVEL_LOW;
+        }
+        callback(undefined, batteryStatus);
       })
     return batteryService;
   }
 
-  setupScanner(deviceName) {
-    if (deviceName == null) {
-      this.log.warn("device name is not set.");
+  batteryLevel() {
+    return this.latestBatteryLevel ?? 100;
+  }
+
+  batteryLevelThreshold() {
+    return 10;
+  }
+
+  setupScanner(address) {
+    if (address == null) {
+      this.log.warn("address is not set.");
       return;
     }
     this.log.info("Setting up");
 
-    const scanner = new Scanner(this.log, this.config.deviceName);
+    const scanner = new Scanner(this.log, this.config.address);
 
     scanner.on("updateValues", (newValue => {
       const {temp, humi, bat} = newValue;
