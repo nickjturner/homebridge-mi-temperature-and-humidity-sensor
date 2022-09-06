@@ -3,7 +3,7 @@
   "pluginType": "accessory",
   "singular": false,
   "additionalProperties": false,
-  "headerDisplay": "Sensors have to be flashed before adding to remove the encryption. Please use this tool to flash: https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html\n\nCheck plugin readme for more info.",
+  "headerDisplay": "Sensors have to be flashed before adding to remove the encryption. I recommend using this [flashing tool](https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html) (This is not made by or supported by me).\n\nGet the MAC Address from the flashing tool, or by using `bluetoothctl scan le` from the terminal\n\nCheck the [plugin repo](https://github.com/nickjturner/homebridge-mi-temperature-and-humidity-sensor) for more info.",
   "schema": {
     "name": {
       "type": "string",
@@ -14,7 +14,7 @@
     "address": {
       "type": "string",
       "title": "MAC Address",
-      "description": "Get the MAC Address from the flashing tool, or by using bluetoothctl scan le",
+      "placeholder": "00:00:00:00:00:00",
       "required": true
     }
   }
