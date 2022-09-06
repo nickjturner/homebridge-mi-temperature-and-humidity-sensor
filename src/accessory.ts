@@ -50,6 +50,10 @@ class MiSensor implements AccessoryPlugin {
     log.info("Config: " + this.config);
 
     this.scanner = this.setupScanner(this.config.address);
+
+    setInterval(() => {
+      this.scanner.start();
+    }, 60000);
   }
  
   getServices(): Service[] {
@@ -69,7 +73,6 @@ class MiSensor implements AccessoryPlugin {
       .setCharacteristic(hap.Characteristic.Name, this.config.name)
       .setCharacteristic(hap.Characteristic.Manufacturer, "Xiaomi Mijia")
       .setCharacteristic(hap.Characteristic.Model, "LYWSD03MMC")
-      .setCharacteristic(hap.Characteristic.SerialNumber, this.config.deviceName)
     return accessoryInformation;
   }
 

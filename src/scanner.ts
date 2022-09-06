@@ -12,6 +12,7 @@ export class Scanner extends EventEmitter {
 
     this.log = log;
     this.address = address;
+    this.log.debug(process.env.inspect ?? "no env");
 
     this.registerEvents();
   }
@@ -26,6 +27,7 @@ export class Scanner extends EventEmitter {
 
   start() {
     try {
+      this.log.debug("Scanning...");
       noble.startScanning([], true);
     } catch (error) {
       this.emit("error", error);
@@ -38,6 +40,7 @@ export class Scanner extends EventEmitter {
 
   async onDiscover(peripheral) {
     if (peripheral.address) {
+      this.log.debug("device found: " + peripheral.address);
       if (peripheral.address == this.address) {
         const serviceData = peripheral.advertisement.serviceData;
         for (const j in serviceData) {

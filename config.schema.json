@@ -1,80 +1,21 @@
 {
   "pluginAlias": "MiSensor",
-  "pluginType": "registerAccessory",
-  "singular": true,
+  "pluginType": "accessory",
+  "singular": false,
+  "additionalProperties": false,
+  "headerDisplay": "Sensors have to be flashed before adding to remove the encryption. Please use this tool to flash: https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html\n\nCheck plugin readme for more info.",
   "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "title": "Name",
-        "type": "string",
-        "required": true,
-        "default": "Mi Sensor"
-      }
+    "name": {
+      "type": "string",
+      "title": "Sensor Name",
+      "description": "This is the name the sensor will use in HomeKit",
+      "required": true
     },
-    "devices": {
-        "type": "array",
-        "items": {
-          "title": "Devices",
-          "type": "object",
-          "properties": {
-            "displayName": {
-              "title": "Name",
-              "type": "string",
-              "placeholder": "Living Room Sensor"
-            },
-            "deviceName": {
-              "title": "Device Name",
-              "type": "string",
-              "placeholder": "ATC13134425"
-            }
-          }
-        }
-      }
+    "address": {
+      "type": "string",
+      "title": "MAC Address",
+      "description": "Get the MAC Address from the flashing tool, or by using bluetoothctl scan le",
+      "required": true
     }
   }
-}
-
-{
-  "pluginAlias": "MiSensor",
-  "pluginType": "registerAccessory",
-  "singular": false,
-  "headerDisplay": null,
-  "schema": {
-    "type": "object",
-    "properties": {
-      "name": {
-        "title": "Accessory Name",
-        "type": "string",
-        "format": "string",
-        "default": "Temperature & Humidity",
-        "minLength": 1,
-        "required": true
-      },
-      "deviceName": {
-        "title": "Device Name",
-        "type": "string",
-        "format": "string",
-        "placeholder": "ATC_B93F72",
-        "description": "Required. Can be found or set in the <a href=\"https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html\"  target=\"_blank\">flashing app</a>",
-        "required": true
-      }
-    }
-  },
-  "layout": [
-    {
-      "type": "flex",
-      "flex-flow": "row wrap",
-      "items": [
-        "name"
-      ]
-    },
-    {
-      "type": "flex",
-      "flex-flow": "row wrap",
-      "items": [
-        "deviceName"
-      ]
-    }
-  ]
 }
