@@ -3,8 +3,8 @@
 
 # homebridge-mi-temperature-and-humidity-sensor
 
-[![npm version](https://badgen.net/npm/v/@switchbot/homebridge-switchbot)](https://www.npmjs.com/package/homebridge-sesame-smart-lock)
-[![npm downloads](https://badgen.net/npm/dt/@switchbot/homebridge-switchbot)](https://www.npmjs.com/package/homebridge-sesame-smart-lock)
+[![npm version](https://badgen.net/npm/v/homebridge-mi-temperature-and-humidity-sensor)](https://www.npmjs.com/package/homebridge-mi-temperature-and-humidity-sensor)
+[![npm downloads](https://badgen.net/npm/dt/homebridge-mi-temperature-and-humidity-sensor)](https://www.npmjs.com/package/homebridge-mi-temperature-and-humidity-sensor)
 
 <p>The Homebridge Mi Temperature and Humidity Sensor plugin allows you to add your Mi Sensor from HomeKit with
   <a href="https://homebridge.io">Homebridge</a>. 
@@ -53,7 +53,7 @@ For the BLE connection look at the noble [prerequisites](https://github.com/aban
   4. `address` is the device MAC address. This can be found by using the above flashing tool, or by running `bluetoothctl scan le` from the terminal.
   5. Restart Homebridge to pick up the new accessory.
   6. Repeat with as many sensors as you want.
-  
+
 ## Troubleshooting
 
 If you are having any problems open an issue in this repo and I will try to help.
