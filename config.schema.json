@@ -5,17 +5,20 @@
   "additionalProperties": false,
   "headerDisplay": "Sensors have to be flashed before adding to remove the encryption. I recommend using this [flashing tool](https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html) (This is not made by or supported by me).\n\nGet the MAC Address from the flashing tool, or by using `bluetoothctl scan le` from the terminal\n\nCheck the [plugin repo](https://github.com/nickjturner/homebridge-mi-temperature-and-humidity-sensor) for more info.",
   "schema": {
-    "name": {
-      "type": "string",
-      "title": "Sensor Name",
-      "description": "This is the name the sensor will use in HomeKit",
-      "required": true
-    },
-    "address": {
-      "type": "string",
-      "title": "MAC Address",
-      "placeholder": "00:00:00:00:00:00",
-      "required": true
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Sensor Name",
+        "description": "This is the name the sensor will use in HomeKit",
+        "required": true
+      },
+      "address": {
+        "type": "string",
+        "title": "MAC Address",
+        "placeholder": "00:00:00:00:00:00",
+        "required": true
+      }
     }
   }
 }
