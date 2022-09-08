@@ -11,7 +11,7 @@ export class Scanner extends EventEmitter {
     super();
 
     this.log = log;
-    this.address = address;
+    this.address = address.replace(':', '').toLowerCase();
     this.log.debug(process.env.inspect ?? "no env");
 
     this.registerEvents();
@@ -40,8 +40,8 @@ export class Scanner extends EventEmitter {
 
   async onDiscover(peripheral) {
     if (peripheral.address) {
-      this.log.debug("device found: " + peripheral.address);
-      if (peripheral.address == this.address) {
+      if (peripheral.address.replace(':', '').toLowerCase() == this.address) {
+        this.log.debug("device found: " + peripheral.address);
         const serviceData = peripheral.advertisement.serviceData;
         for (const j in serviceData) {
           let b = serviceData[j].data

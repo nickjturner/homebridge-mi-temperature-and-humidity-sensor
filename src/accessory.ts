@@ -47,7 +47,6 @@ class MiSensor implements AccessoryPlugin {
     this.batteryService = this.getBatteryService();
 
     log.info(this.config.name + " - Sensor finished initializing!");
-    log.info("Config: " + this.config);
 
     this.scanner = this.setupScanner(this.config.address);
 
@@ -55,7 +54,7 @@ class MiSensor implements AccessoryPlugin {
       this.scanner.start();
     }, 60000);
   }
- 
+
   getServices(): Service[] {
     return [
       this.informationService,
@@ -81,9 +80,9 @@ class MiSensor implements AccessoryPlugin {
     temperatureService
       .getCharacteristic(hap.Characteristic.CurrentTemperature)
       .on(CharacteristicEventTypes.GET, (callback: CharacteristicGetCallback) => {
-        callback(undefined, (this.latestTemperature ?? 0));  
+        callback(undefined, (this.latestTemperature ?? 0));
       });
-     
+
     return temperatureService;
   }
 
