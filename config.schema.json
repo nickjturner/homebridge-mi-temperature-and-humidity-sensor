@@ -2,8 +2,8 @@
   "pluginAlias": "MiSensor",
   "pluginType": "accessory",
   "singular": false,
-  "additionalProperties": false,
-  "headerDisplay": "Sensors have to be flashed before adding to remove the encryption. I recommend using this [flashing tool](https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html) (This is not made by or supported by me).\n\nGet the MAC Address from the flashing tool, or by using `bluetoothctl scan le` from the terminal\n\nCheck the [plugin repo](https://github.com/nickjturner/homebridge-mi-temperature-and-humidity-sensor) for more info.",
+  "headerDisplay": "Sensors have to be flashed before adding to remove the encryption. I recommend using this [flashing tool](https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html) (This is not made by or supported by me).\n\nGet the MAC Address from the flashing tool, or by using `bluetoothctl scan le` from the terminal",
+  "footerDisplay": "Check the [plugin repo](https://github.com/nickjturner/homebridge-mi-temperature-and-humidity-sensor) for more info.",
   "schema": {
     "type": "object",
     "properties": {
@@ -20,5 +20,9 @@
         "required": true
       }
     }
-  }
+  },
+  "form": [
+    "name",
+    "address"
+  ]
 }
