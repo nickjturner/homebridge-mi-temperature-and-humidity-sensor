@@ -30,7 +30,7 @@ For the BLE connection look at the noble [prerequisites](https://github.com/aban
   1. Search for "homebridge-mi-temperature-and-humidity-sensor" on the plugin screen.
   2. Click **Install** on `homebridge-mi-temperature-and-humidity-sensor`
   3. Give the sensor a useful name. (This will appear in the HomeKit app).
-  4. Add the MAC address. This can be found by using the above flashing tool, or by running `bluetoothctl scan le` from the terminal.
+  4. Add the MAC address. This can be found by using the above flashing tool, or by running `bluetoothctl scan le` from the terminal. The address will start with `A4:C1:38`.
   5. Restart Homebridge to pick up the new accessory.
   6. Repeat with as many sensors as you want.
 
@@ -50,7 +50,7 @@ For the BLE connection look at the noble [prerequisites](https://github.com/aban
   ]
   ```
   3. `name` should be a useful name for the sensor. (This will appear in the HomeKit app).
-  4. `address` is the device MAC address. This can be found by using the above flashing tool, or by running `bluetoothctl scan le` from the terminal.
+  4. `address` is the device MAC address. This can be found by using the above flashing tool, or by running `bluetoothctl scan le` from the terminal. The address will start with `A4:C1:38`.
   5. Restart Homebridge to pick up the new accessory.
   6. Repeat with as many sensors as you want.
 
