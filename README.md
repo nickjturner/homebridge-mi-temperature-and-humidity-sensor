@@ -56,4 +56,12 @@ For the BLE connection look at the noble [prerequisites](https://github.com/aban
 
 ## Troubleshooting
 
+I've tested this plugin on a Raspberry Pi 4, Pi Zero W and a MacBook Pro running Monterey. It should work on other systems, but let me know if there are any issues.
+
 If you are having any problems open an issue in this repo and I will try to help.
+
+## Future Development
+
+I'm planning an update that will remove the requirement for flashing, but I'm having some issues with the bluetooth on my Pi 4 which is slowing down any progress.
+
+

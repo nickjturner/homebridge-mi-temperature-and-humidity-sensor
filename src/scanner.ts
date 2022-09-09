@@ -12,7 +12,6 @@ export class Scanner extends EventEmitter {
 
     this.log = log;
     this.address = address.replace(':', '').toLowerCase();
-    this.log.debug(process.env.inspect ?? "no env");
 
     this.registerEvents();
   }
