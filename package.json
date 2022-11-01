@@ -1,7 +1,7 @@
 {
   "name": "homebridge-mi-temperature-and-humidity-sensor",
   "displayName": "Mi Temperature & Humidity Sensor",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Homebridge plugin that exposes Mi temperature and humiditity sensors as HomeKit accessories",
   "main": "dist/accessory.js",
   "scripts": {
