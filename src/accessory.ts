@@ -49,12 +49,18 @@ class MiSensor implements AccessoryPlugin {
     log.info(this.config.name + " - Sensor finished initializing!");
 
     this.scanner = this.setupScanner(this.config.address);
-
     setInterval(() => {
       this.scanner.start();
-    }, 60000);
+    }, this.getScanTimeout());
   }
 
+  getScanTimeout() {
+    if (Number.isInteger(this.config.scanTimeout)){
+      return parseInt(this.config.scanTimeout, 10) * 1000
+    }
+    return 60000 // default scan interval is 1 minute
+  }
+  
   getServices(): Service[] {
     return [
       this.informationService,

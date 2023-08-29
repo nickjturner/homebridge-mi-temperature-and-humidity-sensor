@@ -18,11 +18,18 @@
         "title": "MAC Address",
         "placeholder": "00:00:00:00:00:00",
         "required": true
+      },
+      "scanTimeout":{
+        "type": "integer",
+        "title": "Scan timeout",
+        "description": "Interval in seconds between sensor scans",
+        "required": false
       }
     }
   },
   "form": [
     "name",
-    "address"
+    "address",
+    "scanTimeout"
   ]
 }
