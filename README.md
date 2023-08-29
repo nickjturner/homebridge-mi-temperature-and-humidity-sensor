@@ -45,14 +45,16 @@ For the BLE connection look at the noble [prerequisites](https://github.com/aban
       {
           "accessory": "MiSensor",
           "name": "Living Room Mi Sensor",
-          "address": "a4:c1:38:b9:3f:72"
+          "address": "a4:c1:38:b9:3f:72",
+          "scanTimeout": 3600,
       }
   ]
   ```
   3. `name` should be a useful name for the sensor. (This will appear in the HomeKit app).
   4. `address` is the device MAC address. This can be found by using the above flashing tool, or by running `bluetoothctl scan le` from the terminal. The address will start with `A4:C1:38`.
-  5. Restart Homebridge to pick up the new accessory.
-  6. Repeat with as many sensors as you want.
+  5. `scanTimeout` is the interval in seconds between sensor scans. For example, 3600 (1 hour) can reduce sensor battery drain. The default is 1 minute.
+  6. Restart Homebridge to pick up the new accessory.
+  7. Repeat with as many sensors as you want.
 
 ## Troubleshooting
 
