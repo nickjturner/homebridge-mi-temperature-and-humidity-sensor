@@ -46,7 +46,7 @@ For the BLE connection look at the noble [prerequisites](https://github.com/aban
           "accessory": "MiSensor",
           "name": "Living Room Mi Sensor",
           "address": "a4:c1:38:b9:3f:72",
-          "scanTimeout": 3600,
+          "scanTimeout": 3600
       }
   ]
   ```
