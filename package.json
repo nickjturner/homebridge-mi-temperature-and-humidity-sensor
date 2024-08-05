@@ -1,8 +1,8 @@
 {
-  "name": "homebridge-mi-temperature-and-humidity-sensor",
-  "displayName": "Mi Temperature & Humidity Sensor",
-  "version": "1.0.6",
-  "description": "Homebridge plugin that exposes Mi temperature and humiditity sensors as HomeKit accessories",
+  "name": "homebridge-lywsd03mmc-sensor",
+  "displayName": "Homebridge plugin to LYWSD03MMC Mi Sensor",
+  "version": "1.0.0",
+  "description": "Homebridge plugin that exposes Mi temperature and humiditity sensors (LYWSD03MMC) as HomeKit accessories",
   "main": "dist/accessory.js",
   "scripts": {
     "clean": "rimraf ./dist",
@@ -21,7 +21,8 @@
     "bluetooth low energy",
     "mi",
     "humidity",
-    "temperature"
+    "temperature",
+    "lywsd03mmc"
   ],
   "license": "ISC",
   "files": [
@@ -30,7 +31,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/nickjturner/homebridge-mi-temperature-and-humidity-sensor"
+    "url": "git://github.com/kech37/homebridge-lywsd03mmc-sensor"
   },
   "bugs": {
     "url": "http://github.com/homebridge/homebridge-examples/issues"
