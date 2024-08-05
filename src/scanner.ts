@@ -1,6 +1,6 @@
+import { EventEmitter } from "events";
 import { Logging } from "homebridge";
 import noble from "@abandonware/noble";
-import { EventEmitter } from "events";
 
 export class Scanner extends EventEmitter {
   private readonly log: Logging;
@@ -46,11 +46,11 @@ export class Scanner extends EventEmitter {
         for (const j in serviceData) {
           let b = serviceData[j].data
 
-          let temp = b.readInt16LE(6, true) / 100.0;
-          let humi = b.readInt16LE(8, true) / 100.0;
-          let bat = b.readUInt8(12);
+          const temp = b.readUInt16LE(0) / 100;
+          const humi = b.readUInt8(2);
+          const bat = b.readUInt16LE(3);
 
-          this.emit("updateValues", {temp, humi, bat});
+          this.emit("updateValues", { temp, humi, bat });
 
           this.stop();
         }

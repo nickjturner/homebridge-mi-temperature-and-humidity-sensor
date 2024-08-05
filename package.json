@@ -1,8 +1,8 @@
 {
-  "name": "homebridge-mi-temperature-and-humidity-sensor",
-  "displayName": "Mi Temperature & Humidity Sensor",
+  "name": "homebridge-mi-temperature-and-humidity-sensor-temp-humi-fix",
+  "displayName": "Mi Temperature & Humidity Sensor - Temperature and Humidity Fix",
   "version": "1.0.6",
-  "description": "Homebridge plugin that exposes Mi temperature and humiditity sensors as HomeKit accessories",
+  "description": "Homebridge plugin that exposes Mi temperature and humiditity sensors as HomeKit accessories - Temperature and Humidity Fix",
   "main": "dist/accessory.js",
   "scripts": {
     "clean": "rimraf ./dist",
